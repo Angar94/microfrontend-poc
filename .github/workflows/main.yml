@@ -19,12 +19,6 @@ jobs:
     - name: Install
       run: npm install
 
-    - name: TS
-      run: npm install typescript@latest
-
-    - name: Vite
-      run: npm install vite@latest
-
     - name: Build
       run: npm run build
 
