@@ -19,35 +19,23 @@ jobs:
     - name: Install
       run: npm install
 
-    - name: Build
+    - name: Build                                                                         
       run: npm run build
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v2'
+      with:
+        workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+        service_account: ${{ secrets.GCP_SA }}
 
-#     permissions:
-#       contents: "read"
-#       id-token: "write"
+    - id: 'upload-folder'
+      uses: 'google-github-actions/upload-cloud-storage@v2'
+      with:
+        path: '/dist'
+        destination: 'micro-app-claims'
 
-#     steps:
-#       - id: "checkout"
-#         uses: "actions/checkout@v4"
-
-#       - id: "auth"
-#         uses: "google-github-actions/auth@v2"
-#         with:
-#           workload_identity_provider: "projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider"
-#           service_account: "my-service-account@my-project.iam.gserviceaccount.com"
-
-#       - id: "upload-folder"
-#         uses: "google-github-actions/upload-cloud-storage@v2"
-#         with:
-#           path: "/path/to/folder"
-#           destination: "bucket-name"
-
-#         # Example of using the output
-#       - id: "uploaded-files"
-#         uses: "foo/bar@v1"
-#         env:
-#           files: "${{ steps.upload-folder.outputs.uploaded }}"
+    # Example of using the output
+    # - id: 'uploaded-files'
+    #   uses: 'foo/bar@v1'
+    #   env:
+    #     files: '${{ steps.upload-folder.outputs.uploaded }}'
