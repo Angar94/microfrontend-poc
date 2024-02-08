@@ -17,13 +17,13 @@ jobs:
         node-version: latest
 
     - name: Install
-      run: npm install, npm install typescript@latest, npm install vite@latest
+      run: npm install
 
     - name: TS
       run: npm install typescript@latest
 
     - name: Vite
-      run: nm install vite@latest
+      run: npm install vite@latest
 
     - name: Build
       run: npm run build
