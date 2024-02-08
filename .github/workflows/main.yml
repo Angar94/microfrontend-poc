@@ -22,7 +22,8 @@ jobs:
     - name: Build                                                                         
       run: npm run build
 
-    - id: 'auth'
+    - name: GCP auth
+      id: 'auth'
       uses: 'google-github-actions/auth@v2'
       with:
         workload_identity_provider: 'principal://iam.googleapis.com/projects/720030352680/locations/global/workloadIdentityPools/my-pool/subject/SUBJECT_ATTRIBUTE_VALUE'
@@ -30,7 +31,8 @@ jobs:
         service_account: 'micro-app@microapp-poc.iam.gserviceaccount.com'
         # ${{ secrets.GCP_SA }}
 
-    - id: 'upload-folder'
+    - name: Upload folder
+      id: 'upload-folder'
       uses: 'google-github-actions/upload-cloud-storage@v2'
       with:
         path: '/dist'
