@@ -22,9 +22,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Version
-        run: mv dist v1.0.0  
-
       - name: GCP auth
         id: "auth"
         uses: "google-github-actions/auth@v2"
@@ -35,8 +32,8 @@ jobs:
         id: "upload-folder"
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
-          path: "v1.0.0"
-          destination: "micro-app-claims"
+          path: dist
+          destination: "micro-app-claims/v1.0.0"
 
     # Example of using the output
     # - id: 'uploaded-files'
