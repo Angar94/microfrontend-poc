@@ -39,7 +39,7 @@ jobs:
         with:
           path: dist
           parent: false
-          destination: micro-app-claims/${{ steps.computed.outputs.version }}
+          destination: micro-app-claims/v${{ steps.computed.outputs.version }}
 
     # Example of using the output
     # - id: 'uploaded-files'
