@@ -25,7 +25,7 @@ jobs:
       - name: Version
         id: computed
         run: |
-          echo "version=\$(npm pkg get version | sed 's/\"//g')" >> $GITHUB_OUTPUT 
+          echo "version=$(npm pkg get version | sed 's/\"//g')" >> $GITHUB_OUTPUT 
 
       - name: GCP auth
         id: auth
