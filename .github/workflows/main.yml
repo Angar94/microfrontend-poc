@@ -32,7 +32,8 @@ jobs:
         id: "upload-folder"
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
-          path: dist/*
+          path: dist
+          parent: false
           destination: "micro-app-claims/v1.0.0"
 
     # Example of using the output
